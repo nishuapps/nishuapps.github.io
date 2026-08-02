@@ -1,1091 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy – GoNotes Pro</title>
-  <style>
-    :root {
-      --primary:   #1a73e8;
-      --primary-d: #1558b0;
-      --bg:        #f8f9fa;
-      --surface:   #ffffff;
-      --border:    #e0e0e0;
-      --text:      #212121;
-      --muted:     #616161;
-      --accent:    #e8f0fe;
-      --warn:      #fff3e0;
-      --warn-b:    #e65100;
-      --green:     #e8f5e9;
-      --green-b:   #2e7d32;
-      --radius:    12px;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.75;
-      color: var(--text);
-      background: var(--bg);
-    }
-
-    /* ── Header ── */
-    .hero {
-      background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
-      color: #fff;
-      padding: 60px 24px 48px;
-      text-align: center;
-    }
-    .hero .app-icon {
-      width: 80px; height: 80px;
-      background: #fff;
-      border-radius: 20px;
-      display: inline-flex; align-items: center; justify-content: center;
-      font-size: 42px; margin-bottom: 18px;
-      box-shadow: 0 8px 24px rgba(0,0,0,.25);
-    }
-    .hero h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
-    .hero p  { font-size: 1rem; opacity: .85; max-width: 540px; margin: 0 auto; }
-    .hero .meta { margin-top: 20px; font-size: .85rem; opacity: .7; }
-
-    /* ── Layout ── */
-    .container {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 20px 80px;
-    }
-
-    /* ── TOC ── */
-    .toc {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px 32px;
-      margin: 36px 0 0;
-    }
-    .toc h2 { font-size: 1rem; font-weight: 700; color: var(--primary); margin-bottom: 14px; text-transform: uppercase; letter-spacing: .05em; }
-    .toc ol  { padding-left: 20px; }
-    .toc li  { margin: 6px 0; }
-    .toc a   { color: var(--primary); text-decoration: none; font-weight: 500; }
-    .toc a:hover { text-decoration: underline; }
-
-    /* ── Sections ── */
-    section {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 36px 40px;
-      margin-top: 28px;
-    }
-
-    .section-header {
-      display: flex; align-items: center; gap: 14px;
-      margin-bottom: 22px;
-      padding-bottom: 16px;
-      border-bottom: 2px solid var(--accent);
-    }
-    .section-icon {
-      width: 46px; height: 46px;
-      background: var(--accent);
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 22px; flex-shrink: 0;
-    }
-    h2.section-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    h3 { font-size: 1.05rem; font-weight: 700; margin: 22px 0 10px; color: #333; }
-
-    p  { margin-bottom: 14px; color: var(--text); }
-
-    ul, ol { padding-left: 22px; margin-bottom: 14px; }
-    li { margin-bottom: 6px; }
-
-    /* ── Tables ── */
-    .table-wrap { overflow-x: auto; margin: 16px 0; }
-    table {
-      width: 100%; border-collapse: collapse; font-size: .92rem;
-    }
-    th {
-      background: var(--accent);
-      color: var(--primary-d);
-      font-weight: 700;
-      padding: 11px 14px;
-      text-align: left;
-      border: 1px solid var(--border);
-    }
-    td {
-      padding: 10px 14px;
-      border: 1px solid var(--border);
-      vertical-align: top;
-    }
-    tr:nth-child(even) td { background: #fafafa; }
-
-    /* ── Badges ── */
-    .badge {
-      display: inline-block;
-      padding: 2px 9px;
-      border-radius: 20px;
-      font-size: .78rem;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-    .badge-green  { background:#e8f5e9; color:#2e7d32; }
-    .badge-blue   { background:#e3f2fd; color:#1565c0; }
-    .badge-orange { background:#fff3e0; color:#e65100; }
-    .badge-red    { background:#fce4ec; color:#c62828; }
-    .badge-gray   { background:#f5f5f5; color:#616161; }
-
-    /* ── Callout boxes ── */
-    .callout {
-      border-radius: 10px;
-      padding: 16px 20px;
-      margin: 18px 0;
-      display: flex; gap: 14px; align-items: flex-start;
-    }
-    .callout-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
-    .callout-body { flex: 1; }
-    .callout-body strong { display: block; margin-bottom: 4px; }
-    .callout-green  { background: var(--green);  border-left: 4px solid var(--green-b); }
-    .callout-orange { background: var(--warn);   border-left: 4px solid var(--warn-b); }
-    .callout-blue   { background: var(--accent); border-left: 4px solid var(--primary); }
-
-    /* ── Permission cards ── */
-    .perm-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 14px;
-      margin: 16px 0;
-    }
-    .perm-card {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 16px 18px;
-    }
-    .perm-card .perm-top {
-      display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
-    }
-    .perm-card .perm-icon { font-size: 22px; }
-    .perm-card .perm-name { font-weight: 700; font-size: .9rem; word-break: break-word; }
-    .perm-card .perm-desc { font-size: .85rem; color: var(--muted); line-height: 1.5; }
-
-    /* ── Footer ── */
-    footer {
-      text-align: center;
-      padding: 32px 20px;
-      font-size: .85rem;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-      margin-top: 40px;
-    }
-    footer a { color: var(--primary); }
-
-    @media (max-width: 600px) {
-      .hero h1 { font-size: 1.5rem; }
-      section { padding: 24px 20px; }
-      .perm-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — GoNotes Pro</title>
+<style>
+  :root {
+    --bg: #f7f7f9;
+    --card: #ffffff;
+    --text: #1f2430;
+    --muted: #5b6472;
+    --accent: #2f6fed;
+    --border: #e3e6ec;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    padding: 0 16px 64px;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  header {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin: 32px 0 24px;
+    padding: 28px 28px 24px;
+  }
+  header h1 { font-size: 26px; margin-bottom: 6px; }
+  header p { color: var(--muted); font-size: 14px; }
+  main section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 18px;
+  }
+  h2 { font-size: 19px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  h3 { font-size: 15px; margin: 16px 0 6px; }
+  p { margin-bottom: 10px; }
+  ul, ol { margin: 0 0 12px 22px; }
+  li { margin-bottom: 6px; }
+  strong { font-weight: 600; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .muted { color: var(--muted); font-size: 14px; }
+  .box { background: #f2f5fb; border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin: 12px 0; }
+  footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 24px; }
+  @media (max-width: 600px) {
+    body { padding: 0 10px 40px; }
+    header, main section { padding: 18px 16px; }
+    header h1 { font-size: 22px; }
+  }
+</style>
 </head>
 <body>
+<div class="wrap">
 
-<!-- ══════════════════════════════════════════
-     HERO / HEADER
-══════════════════════════════════════════ -->
-<header class="hero">
-  <div class="app-icon">📝</div>
+<header>
   <h1>Privacy Policy</h1>
-  <p>GoNotes Pro — Your notes, your device, your privacy.</p>
-  <div class="meta">
-    App Package: <strong>com.nishuapps.gonotes</strong> &nbsp;|&nbsp;
-    Effective Date: <strong>July 25, 2025</strong> &nbsp;|&nbsp;
-    Last Updated: <strong>July 25, 2025</strong>
-  </div>
+  <p><strong>GoNotes Pro</strong> — developed by <strong>NishuApps</strong></p>
+  <p class="muted">Last Updated: August 2, 2026</p>
 </header>
 
-<div class="container">
+<main>
 
-  <!-- ── Table of Contents ── -->
-  <nav class="toc">
-    <h2>📋 Table of Contents</h2>
-    <ol>
-      <li><a href="#overview">Overview &amp; Key Points</a></li>
-      <li><a href="#data-collected">Data We Collect</a></li>
-      <li><a href="#permissions">App Permissions Explained</a></li>
-      <li><a href="#data-storage">How Data Is Stored &amp; Protected</a></li>
-      <li><a href="#google-drive">Google Sign-In &amp; Google Drive Sync</a></li>
-      <li><a href="#third-party">Third-Party Libraries &amp; SDKs</a></li>
-      <li><a href="#data-sharing">Data Sharing &amp; Selling</a></li>
-      <li><a href="#user-rights">Your Rights &amp; Data Deletion</a></li>
-      <li><a href="#children">Children's Privacy</a></li>
-      <li><a href="#security">Security Measures</a></li>
-      <li><a href="#changes">Changes to This Policy</a></li>
-      <li><a href="#contact">Contact Us</a></li>
-    </ol>
-  </nav>
+<section>
+  <h2>Introduction</h2>
+  <p>This Privacy Policy explains how the <strong>GoNotes Pro</strong> Android application ("the App", "we", "our") handles information when you use the App. The App is developed and maintained by <strong>NishuApps</strong>.</p>
+  <p>GoNotes Pro is a notes application. Its core features — creating, editing, storing, searching, and organizing notes — work entirely on your device. An optional Google account sign-in is available only for users who choose to back up and restore their notes using Google Drive.</p>
+  <p>By using the App, you agree to the practices described in this Privacy Policy. We encourage you to read it carefully.</p>
+</section>
 
+<section>
+  <h2>Information We Handle</h2>
+  <p>The App handles the following categories of information, all of which are provided by you or created through your use of the App:</p>
+  <ul>
+    <li><strong>Notes and note content</strong> — the titles, text, and content you create inside the App, including notes organized into folders and categories.</li>
+    <li><strong>Images</strong> — images you attach to your notes using the camera or your device's photo gallery.</li>
+    <li><strong>Reminder information</strong> — reminder and alarm times you set for individual notes, and the note titles associated with those reminders.</li>
+    <li><strong>Preferences and settings</strong> — app preferences such as your chosen theme, view mode, sort order, and categories.</li>
+    <li><strong>Google account information (if you choose to sign in)</strong> — your Google account email address, display name, and profile photo, as described in the next section.</li>
+  </ul>
+  <p>The App does <strong>not</strong> collect device location, contacts, calendar data, SMS or call information, financial information, health information, or advertising identifiers. The App does not use any analytics, advertising, or tracking services.</p>
+</section>
 
-  <!-- ══════════════════════════════════════════
-       SECTION 1 — OVERVIEW
-  ══════════════════════════════════════════ -->
-  <section id="overview">
-    <div class="section-header">
-      <div class="section-icon">🔍</div>
-      <h2 class="section-title">1. Overview &amp; Key Points</h2>
-    </div>
+<section>
+  <h2>Google Account / Authentication</h2>
+  <p>GoNotes Pro does <strong>not</strong> create or maintain a separate GoNotes Pro user account. There is no registration system, no email-and-password sign-up, and no GoNotes-specific account profile.</p>
+  <p>Instead, the App optionally uses your <strong>existing Google Account</strong> through Google Sign-In for two purposes only:</p>
+  <ul>
+    <li>Authenticating you with Google, and</li>
+    <li>Accessing a private, app-specific area of Google Drive to back up and restore your notes (described below).</li>
+  </ul>
+  <p>When you sign in with Google, the App receives basic profile information from Google, including your <strong>email address</strong>, <strong>display name</strong>, and <strong>profile photo</strong>. Your email address is stored on your device in encrypted form so the App can identify which account was last used. Your display name and profile photo are used only to personalize the sign-in screen within the App.</p>
+  <p>The App does not own, control, or manage your Google Account. It cannot delete your Google Account, and it does not retain your Google password. Authentication tokens are handled by Google's own services on your device.</p>
+  <p>Sign-in is <strong>completely optional</strong>. If you do not sign in, all App features other than cloud backup and restore continue to work normally.</p>
+</section>
 
-    <p>
-      <strong>GoNotes Pro</strong> is a personal note-taking app developed by
-      <strong>Pramod Thakur (NishuApps)</strong>. This Privacy Policy explains
-      what information the app accesses, how it is used, and how it is protected.
-    </p>
+<section>
+  <h2>Google Drive Backup &amp; Synchronization</h2>
+  <p>Google Drive backup and synchronization are available when you sign in with your Google Account. After your first sign-in, GoNotes Pro automatically begins backing up your existing notes and associated images to the app-specific area of your Google Drive. While you remain signed in, newly created notes, associated images, and changes to existing notes may be automatically synchronized to your Google Drive backup.</p>
+  <p>When you sign in again after previously using the backup feature, GoNotes Pro first restores available data from your existing GoNotes Pro backup and then uploads local data that is not already present in that backup.</p>
+  <p>GoNotes Pro also provides manual backup and restore options. You can use these options if automatic backup or restore does not complete or if you want to manually initiate a backup or restore operation.</p>
+  <p>If you sign out while a backup is in progress, the backup may not complete. Signing out does not delete your local notes or your existing GoNotes Pro backup from Google Drive.</p>
+  <p>GoNotes Pro uses its app-specific Google Drive storage for its backup data and does not access, modify, or delete your other personal files or folders in Google Drive.</p>
+</section>
 
-    <div class="callout callout-green">
-      <div class="callout-icon">✅</div>
-      <div class="callout-body">
-        <strong>The short version:</strong>
-        Your notes stay on your device. We do not collect, transmit, or sell
-        your personal data. The only optional network activity is backing up
-        <em>your own data</em> to <em>your own</em> Google Drive — and that
-        backup is encrypted before it leaves your device.
-      </div>
-    </div>
+<section>
+  <h2>User-Generated Content</h2>
+  <p>The content you create in the App remains under your control. This includes:</p>
+  <ul>
+    <li><strong>Notes</strong> — titles and body text.</li>
+    <li><strong>Images</strong> — photos you attach to notes.</li>
+    <li><strong>Reminders and alarms</strong> — reminder times you attach to notes, and the titles shown with those reminders.</li>
+    <li><strong>Backup data</strong> — the encrypted backup file described above, which contains your notes and images.</li>
+  </ul>
+  <p>This content is stored <strong>locally on your device</strong>. If you choose to sign in and use the backup feature, a copy of your notes and images is uploaded to your Google Drive AppData folder in encrypted form.</p>
+  <p>Your user-generated content is <strong>not shared with any third party</strong>. It is not sold, and it is not used for advertising or analytics.</p>
+</section>
 
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Question</th>
-            <th>Answer</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Do you collect personal data?</td>
-            <td><span class="badge badge-green">No</span> — no analytics, no accounts required</td>
-          </tr>
-          <tr>
-            <td>Do you share data with third parties?</td>
-            <td><span class="badge badge-green">No</span> — data never leaves your device unless you opt into Drive backup</td>
-          </tr>
-          <tr>
-            <td>Do you show ads?</td>
-            <td><span class="badge badge-green">No</span> — the app is completely ad-free</td>
-          </tr>
-          <tr>
-            <td>Is there analytics/crash tracking?</td>
-            <td><span class="badge badge-green">None</span> — no Firebase, Crashlytics, or any analytics SDK</td>
-          </tr>
-          <tr>
-            <td>Is Google Sign-In required?</td>
-            <td><span class="badge badge-blue">Optional</span> — only for Google Drive backup/restore</td>
-          </tr>
-          <tr>
-            <td>Are notes encrypted?</td>
-            <td><span class="badge badge-green">Yes</span> — AES-256-GCM encryption with hardware-backed keys</td>
-          </tr>
-          <tr>
-            <td>Is the app suitable for children?</td>
-            <td><span class="badge badge-orange">13+</span> — general audience; not specifically designed for children under 13</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+<section>
+  <h2>Local Storage</h2>
+  <p>The App stores data on your device in the following ways:</p>
+  <ul>
+    <li><strong>Notes and categories</strong> are stored in the App's private storage using encryption, with keys protected by your device's secure key storage.</li>
+    <li><strong>Images</strong> attached to notes are stored as image files in the App's private application folder on your device. These files are kept private to the App by the Android operating system.</li>
+    <li><strong>Reminder and alarm information</strong> (reminder times and note titles) is stored locally on your device so that reminders can be shown at the scheduled time.</li>
+    <li><strong>Preferences</strong> (such as theme, view mode, and sort order) are stored locally on your device.</li>
+    <li><strong>Your email address</strong> (if you sign in with Google) is stored locally in encrypted form.</li>
+  </ul>
+  <p>We use reasonable technical safeguards to help protect the information stored by the App, including encryption for note data and your email address where supported by your device. As with any software, no storage or transmission method can be guaranteed to be 100% secure.</p>
+</section>
 
+<section>
+  <h2>How Information Is Used</h2>
+  <p>The App uses the information it handles for the following purposes:</p>
+  <ul>
+    <li>To provide the core note-taking functionality: creating, editing, storing, searching, organizing, and displaying your notes.</li>
+    <li>To attach, display, and share images you choose to add to your notes.</li>
+    <li>To display reminder notifications at the times you set.</li>
+    <li>To provide optional cloud backup and restore when you sign in with your Google Account.</li>
+    <li>To personalize the sign-in screen with your Google display name and profile photo.</li>
+  </ul>
+  <p>The App does not use your information for advertising, marketing, profiling, or any purpose other than those described in this Policy.</p>
+</section>
 
-  <!-- ══════════════════════════════════════════
-       SECTION 2 — DATA COLLECTED
-  ══════════════════════════════════════════ -->
-  <section id="data-collected">
-    <div class="section-header">
-      <div class="section-icon">📊</div>
-      <h2 class="section-title">2. Data We Collect</h2>
-    </div>
+<section>
+  <h2>Data Sharing / Third Parties</h2>
+  <p>GoNotes Pro does <strong>not</strong> sell, rent, or share your information with third parties for advertising, analytics, or any commercial purpose.</p>
+  <p>However, because the App integrates with Google services, certain information is provided to Google when you choose to use those features:</p>
+  <ul>
+    <li>When you <strong>sign in with Google</strong>, Google receives authentication information in accordance with Google's own privacy practices. The App also receives the basic profile information described above.</li>
+    <li>When you use <strong>Google Drive backup</strong>, your encrypted notes and images are uploaded to the app-specific folder of your Google Drive account. This information is processed by Google to provide the Drive service.</li>
+  </ul>
+  <p>These exchanges happen only as part of the Google sign-in and Drive backup functionality you choose to use, and are governed by Google's privacy policies. We encourage you to review <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</p>
+  <p>Apart from these Google services, the App does not transmit your information to any external server or third party.</p>
+</section>
 
-    <p>
-      GoNotes Pro operates on a <strong>local-first, offline-capable</strong> model.
-      All data is stored directly on your device. We break data into two categories:
-    </p>
+<section>
+  <h2>Permissions</h2>
+  <p>The App requests the following permissions, each of which is used only for the purpose described:</p>
+  <ul>
+    <li><strong>Camera</strong> — used only when you choose to take a photo to attach to a note. Photos are stored in the App's private storage.</li>
+    <li><strong>Notifications</strong> — used to show reminder notifications at the times you set for your notes.</li>
+    <li><strong>Internet and network state</strong> — used to communicate with Google services when you choose to sign in or use cloud backup. Your notes function fully without an internet connection.</li>
+    <li><strong>Boot (startup) and wake lock</strong> — used to reschedule your note reminders after a device restart and to show them on time.</li>
+  </ul>
+  <p>The App does not request access to your contacts, location, microphone, call logs, SMS, calendar, or media storage.</p>
+</section>
 
-    <h3>2a. Data You Create (stored locally on your device)</h3>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Data Type</th>
-            <th>What It Is</th>
-            <th>Where Stored</th>
-            <th>Sent Externally?</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Note content</strong></td>
-            <td>Title, body text, formatted text, checkboxes</td>
-            <td>Device (SharedPreferences, encrypted)</td>
-            <td>Only if you enable Drive backup</td>
-          </tr>
-          <tr>
-            <td><strong>Note images</strong></td>
-            <td>Photos taken via camera or attached from gallery</td>
-            <td>App's private internal storage</td>
-            <td>Only if you enable Drive backup</td>
-          </tr>
-          <tr>
-            <td><strong>Note metadata</strong></td>
-            <td>Creation date, modification date, category, colour, PIN lock status</td>
-            <td>Device (SharedPreferences, encrypted)</td>
-            <td>Only if you enable Drive backup</td>
-          </tr>
-          <tr>
-            <td><strong>Reminders</strong></td>
-            <td>Alarm times and note IDs for scheduled reminders</td>
-            <td>Device (SharedPreferences)</td>
-            <td><span class="badge badge-green">Never</span></td>
-          </tr>
-          <tr>
-            <td><strong>App preferences</strong></td>
-            <td>Theme (dark/light), sort order, language, view mode</td>
-            <td>Device (SharedPreferences)</td>
-            <td><span class="badge badge-green">Never</span></td>
-          </tr>
-          <tr>
-            <td><strong>PIN hashes</strong></td>
-            <td>Numeric PINs set to lock individual notes (stored hashed)</td>
-            <td>Device only (inside encrypted note JSON)</td>
-            <td><span class="badge badge-green">Never</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+<section>
+  <h2>Security</h2>
+  <p>We take reasonable technical and organizational measures to help protect your information:</p>
+  <ul>
+    <li>Note data and your email address are stored using encryption with keys protected by your device's secure key storage where supported.</li>
+    <li>Cloud backups are encrypted before they are uploaded to Google Drive.</li>
+    <li>Communication with Google services is protected using secure HTTPS connections.</li>
+    <li>Optional PIN or biometric lock protection is available for individual notes.</li>
+    <li>The App does not back up its data to Google's device backup service, so your notes are not uploaded outside the App through automatic OS backup.</li>
+  </ul>
+  <p>While we strive to use reasonable safeguards, no method of electronic storage or transmission is completely secure. We cannot guarantee absolute security of your information.</p>
+</section>
 
-    <h3>2b. Data Collected When You Use Google Sign-In (Optional)</h3>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Data Type</th>
-            <th>Why We Use It</th>
-            <th>Stored Where</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Google account email</strong></td>
-            <td>To identify your account for backup/restore and display your name in the app</td>
-            <td>Device only (encrypted in SharedPreferences)</td>
-          </tr>
-          <tr>
-            <td><strong>Google account numeric ID</strong></td>
-            <td>To derive the encryption key for your Drive backup (PBKDF2 key derivation)</td>
-            <td>Never stored — used in memory only during encryption</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+<section>
+  <h2>Data Retention</h2>
+  <p>The App retains information for as long as necessary to provide the functionality you request, unless you choose to delete it using the deletion features described below.</p>
+  <ul>
+    <li><strong>Local data</strong> (notes, images, preferences, and reminder information) remains on your device until you delete it or uninstall the App.</li>
+    <li><strong>Google Drive backup</strong> remains in your Google Drive AppData folder until you delete it using the App, using Google's tools, or as long as you keep it.</li>
+  </ul>
+  <p>We do not enforce any fixed retention period because the App has no servers of its own — data is not stored by us, only on your device and, if you choose, in your Google Drive.</p>
+</section>
 
-    <div class="callout callout-orange">
-      <div class="callout-icon">⚠️</div>
-      <div class="callout-body">
-        <strong>What we do NOT collect:</strong>
-        Location data, microphone/audio recordings, contacts, call logs, SMS,
-        advertising ID, device identifiers (IMEI/IMSI), browsing history, or
-        any financial information.
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════
-       SECTION 3 — PERMISSIONS
-  ══════════════════════════════════════════ -->
-  <section id="permissions">
-    <div class="section-header">
-      <div class="section-icon">🔐</div>
-      <h2 class="section-title">3. App Permissions Explained</h2>
-    </div>
-
-    <p>
-      Below are every permission GoNotes Pro requests, why it is needed, and
-      what data it accesses. Permissions are requested only when the relevant
-      feature is used.
-    </p>
-
-    <div class="perm-grid">
-
-      <div class="perm-card">
-        <div class="perm-top">
-          <span class="perm-icon">📷</span>
-          <span class="perm-name">CAMERA</span>
-        </div>
-        <div class="perm-desc">
-          Lets you take a photo directly from within the app and attach it to a note.
-          Photos are saved to the app's private storage. The camera is <strong>never
-          activated silently</strong> — it only opens when you explicitly tap the camera button.
-          <br><br><span class="badge badge-blue">Optional — only when you tap "Take Photo"</span>
-        </div>
-      </div>
-
-      <div class="perm-card">
-        <div class="perm-top">
-          <span class="perm-icon">🔔</span>
-          <span class="perm-name">POST_NOTIFICATIONS</span>
-        </div>
-        <div class="perm-desc">
-          Required on Android 13+ to show reminder notifications. A notification
-          is only sent at the reminder time you set for a specific note. No
-          promotional or unsolicited notifications are sent.
-          <br><br><span class="badge badge-blue">Optional — only if you set a reminder</span>
-        </div>
-      </div>
-
-      <div class="perm-card">
-        <div class="perm-top">
-          <span class="perm-icon">⏰</span>
-          <span class="perm-name">SCHEDULE_EXACT_ALARM</span>
-        </div>
-        <div class="perm-desc">
-          Allows the app to fire reminder alarms at the <em>exact</em> time you
-          specified. Without this, Android can delay alarms by several minutes.
-          <br><br><span class="badge badge-blue">Optional — only if you set a reminder</span>
-        </div>
-      </div>
-
-      <div class="perm-card">
-        <div class="perm-top">
-          <span class="perm-icon">🔁</span>
-          <span class="perm-name">RECEIVE_BOOT_COMPLETED</span>
-        </div>
-        <div class="perm-desc">
-          When your device restarts, Android clears all scheduled alarms.
-          This permission lets GoNotes Pro reschedule your reminders automatically
-          after a reboot so you don't miss them.
-          <br><br><span class="badge badge-blue">Optional — only if you have active reminders</span>
-        </div>
-      </div>
-
-      <div class="perm-card">
-        <div class="perm-top">
-          <span class="perm-icon">💡</span>
-          <span class="perm-name">WAKE_LOCK</span>
-        </div>
-        <div class="perm-desc">
-          Briefly wakes the CPU when a reminder alarm fires to ensure the
-          notification is delivered, even when your device is in deep sleep.
-          The screen is not turned on unless you have set a full-screen alert.
-          <br><br><span class="badge badge-blue">Only during alarm delivery</span>
-        </div>
-      </div>
-
-      <div class="perm-card">
-        <div class="perm-top">
-          <span class="perm-icon">📺</span>
-          <span class="perm-name">USE_FULL_SCREEN_INTENT</span>
-        </div>
-        <div class="perm-desc">
-          Displays a full-screen alarm notification on the lock screen when a
-          reminder fires while the phone is locked — similar to a clock alarm.
-          <br><br><span class="badge badge-blue">Only when alarm fires on lock screen</span>
-        </div>
-      </div>
-
-      <div class="perm-card">
-        <div class="perm-top">
-          <span class="perm-icon">🌐</span>
-          <span class="perm-name">INTERNET</span>
-        </div>
-        <div class="perm-desc">
-          Used <strong>only</strong> to communicate with Google Drive for
-          backup and restore. All traffic is encrypted via HTTPS. The app has
-          no other servers, no analytics endpoints, and no ad networks.
-          <br><br><span class="badge badge-blue">Optional — only during Drive sync</span>
-        </div>
-      </div>
-
-      <div class="perm-card">
-        <div class="perm-top">
-          <span class="perm-icon">📶</span>
-          <span class="perm-name">ACCESS_NETWORK_STATE</span>
-        </div>
-        <div class="perm-desc">
-          Checks whether the device is connected to the internet before
-          attempting a Drive backup, to avoid unnecessary errors.
-          <br><br><span class="badge badge-blue">Read-only network state check</span>
-        </div>
-      </div>
-
-    </div>
-
-    <h3>Permissions Explicitly Removed</h3>
-    <p>
-      Some third-party libraries may request permissions that GoNotes Pro does
-      not need. We explicitly strip the following from the app manifest to
-      prevent them from being granted:
-    </p>
+<section>
+  <h2>Data Deletion</h2>
+  <p>You can delete your GoNotes Pro data from inside the App at any time.</p>
+  <div class="box">
+    <p><strong>Delete Local &amp; Cloud Data</strong> (available in the App under Privacy &amp; Data):</p>
     <ul>
-      <li><strong>ACCESS_FINE_LOCATION</strong> — removed; the app does not use location</li>
-      <li><strong>ACCESS_COARSE_LOCATION</strong> — removed; the app does not use location</li>
-      <li><strong>ACCESS_MEDIA_LOCATION</strong> — removed; not required for camera or image features</li>
+      <li>Deletes all notes and local App data from your device.</li>
+      <li>Deletes the images and files associated with your notes from the App's private storage.</li>
+      <li>Deletes the GoNotes Pro backup file from your Google Drive AppData folder.</li>
     </ul>
-  </section>
+  </div>
+  <p>You can also delete individual notes using the App's note deletion and recycle bin features.</p>
+  <p>Please note the distinction between these actions:</p>
+  <ul>
+    <li><strong>Deleting GoNotes Pro data</strong> removes the data the App controls — your local notes and the App's cloud backup file.</li>
+    <li><strong>Deleting your Google Account</strong> is controlled by Google, not by GoNotes Pro. The App cannot delete your Google Account.</li>
+    <li><strong>Deleting your personal Google Drive files</strong> is controlled by you through your Google Account. The App does not access or delete files in your Drive outside its own app-specific folder.</li>
+  </ul>
+</section>
 
+<section>
+  <h2>Logout / Disconnect</h2>
+  <p>The App provides a <strong>Logout</strong> option for users who have signed in with Google.</p>
+  <p>Logout does the following:</p>
+  <ul>
+    <li>Signs you out of Google authentication in the App.</li>
+    <li>Revokes the App's access to your Google account.</li>
+    <li>Stops automatic synchronization of your backup.</li>
+    <li>Removes your Google profile information from the sign-in screen.</li>
+  </ul>
+  <p>Logout does <strong>not</strong> delete your notes, does not delete your images, and does not delete your existing Google Drive backup. If you want to delete that data, use the data deletion features described above.</p>
+</section>
 
-  <!-- ══════════════════════════════════════════
-       SECTION 4 — DATA STORAGE & PROTECTION
-  ══════════════════════════════════════════ -->
-  <section id="data-storage">
-    <div class="section-header">
-      <div class="section-icon">🗄️</div>
-      <h2 class="section-title">4. How Data Is Stored &amp; Protected</h2>
-    </div>
+<section>
+  <h2>Children's Privacy</h2>
+  <p>GoNotes Pro is a general-purpose notes application and is not directed at children under the age of 13. We do not knowingly collect personal information from children. If you are a parent or guardian and believe your child has provided personal information through the App, please contact us at the address below so we can assist.</p>
+</section>
 
-    <h3>Local Storage</h3>
-    <p>
-      All notes, images, and settings are stored in the app's
-      <strong>private local storage</strong> on your device. Other apps cannot
-      access this data. Uninstalling the app deletes all locally stored data.
-    </p>
+<section>
+  <h2>User Choices</h2>
+  <p>You have the following choices regarding your information:</p>
+  <ul>
+    <li><strong>Use the App without cloud backup</strong> — the App works fully on your device without signing in to Google.</li>
+    <li><strong>Manual Backup &amp; Restore</strong> — you can manually start a backup or restore operation when needed, including when automatic synchronization does not complete.</li>
+    <li><strong>Logout</strong> — disconnect your Google account from the App at any time.</li>
+    <li><strong>Delete individual notes</strong> — using the App's note deletion and recycle bin features.</li>
+    <li><strong>Delete all local and cloud data</strong> — using the Delete Local &amp; Cloud Data feature described above.</li>
+    <li><strong>Contact us</strong> — if you have questions about your data or this Policy, you can reach us at the email address below.</li>
+  </ul>
+</section>
 
-    <div class="callout callout-blue">
-      <div class="callout-icon">🔑</div>
-      <div class="callout-body">
-        <strong>Cloud backup is disabled by default:</strong>
-        <code>android:allowBackup="false"</code> and
-        <code>android:fullBackupContent="false"</code> are set, so Android's
-        automatic cloud backup system never copies your notes without your
-        explicit action.
-      </div>
-    </div>
+<section>
+  <h2>Privacy Policy Changes</h2>
+  <p>We may update this Privacy Policy from time to time to reflect changes in the App's functionality, our data handling practices, or applicable legal requirements. When we make changes, we will update the "Last Updated" date at the top of this page.</p>
+  <p>We encourage you to review this Privacy Policy periodically to stay informed about how the App handles your information.</p>
+</section>
 
-    <h3>Encryption (AES-256-GCM)</h3>
-    <p>
-      Notes are encrypted using <strong>AES-256-GCM</strong> — the same
-      standard used by modern browsers and messaging apps. The encryption key is:
-    </p>
-    <ul>
-      <li>Derived from your Google account numeric ID using <strong>PBKDF2WithHmacSHA256</strong> (industry-standard key derivation)</li>
-      <li>Stored in the <strong>Android Keystore</strong>, which is hardware-backed on modern devices — the key cannot be extracted from the device</li>
-      <li>Never transmitted or stored in plaintext anywhere</li>
-    </ul>
+<section>
+  <h2>Contact Us</h2>
+  <p>If you have any questions, concerns, or requests regarding this Privacy Policy or your data, you can contact us at:</p>
+  <p><strong>NishuApps</strong><br>
+  <strong>GoNotes Pro</strong><br>
+  Email: <a href="mailto:nishuapps.dev@gmail.com">nishuapps.dev@gmail.com</a></p>
+</section>
 
-    <h3>Image Storage</h3>
-    <p>
-      Photos you attach to notes are saved in the app's private internal
-      directory. Camera images are automatically converted to efficient WebP
-      format and the original heavy file is deleted. Image file paths stored
-      inside note JSON are also individually encrypted.
-    </p>
-
-    <h3>Reminder Data</h3>
-    <p>
-      Reminder times and associated note IDs are stored in a separate
-      <code>SharedPreferences</code> file (<code>"MyNotesAlarms"</code>)
-      on your device. This data is never transmitted externally.
-    </p>
-
-    <h3>Screen Security</h3>
-    <p>
-      When you enter a PIN to unlock a note, the app enables the
-      <strong>FLAG_SECURE</strong> window flag, which prevents screenshots
-      and screen recording of that screen.
-    </p>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════
-       SECTION 5 — GOOGLE SIGN-IN & DRIVE
-  ══════════════════════════════════════════ -->
-  <section id="google-drive">
-    <div class="section-header">
-      <div class="section-icon">☁️</div>
-      <h2 class="section-title">5. Google Sign-In &amp; Google Drive Sync</h2>
-    </div>
-
-    <div class="callout callout-orange">
-      <div class="callout-icon">⚠️</div>
-      <div class="callout-body">
-        <strong>This feature is entirely optional.</strong>
-        GoNotes Pro works fully offline without a Google account. Drive sync
-        is only available if you choose to sign in.
-      </div>
-    </div>
-
-    <h3>What Happens When You Sign In</h3>
-    <ol>
-      <li>You are redirected to Google's standard OAuth sign-in screen (handled by Google, not by us).</li>
-      <li>GoNotes Pro requests <strong>only the <code>DRIVE_APPDATA</code> scope</strong> — a restricted, app-specific folder in your Google Drive that <em>only GoNotes Pro can read</em>. No other app (including other Google apps) can see this folder.</li>
-      <li>A single encrypted backup file (<code>GoNotesPro_Backup.qnb</code>) is uploaded to this private folder.</li>
-    </ol>
-
-    <h3>Google Drive Scope Used</h3>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>OAuth Scope</th>
-            <th>What It Allows</th>
-            <th>What We Access</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><code>https://www.googleapis.com/auth/drive.appdata</code></td>
-            <td>Read/write access to a private, app-specific folder only — not your full Drive</td>
-            <td>Only the backup file created by GoNotes Pro itself</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p>
-      We do <strong>not</strong> request access to your full Drive, your files,
-      your emails, your contacts, your photos library, or any other Google service.
-    </p>
-
-    <h3>Backup Encryption</h3>
-    <p>
-      Before any data is uploaded to Google Drive, it is encrypted on your
-      device using <strong>AES-256-GCM</strong> with a key derived from your
-      Google account ID. The encrypted file is meaningless without your account.
-      The same account on any device can decrypt the backup.
-    </p>
-
-    <h3>Revoking Access</h3>
-    <p>
-      You can revoke GoNotes Pro's access to your Google Drive at any time:
-    </p>
-    <ol>
-      <li>Open GoNotes Pro → Side Menu → Sign Out</li>
-      <li>Or: visit <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a> and remove GoNotes Pro</li>
-    </ol>
-    <p>
-      Revoking access deletes the Drive connection from the app and removes the
-      stored account email. Your local notes are not affected.
-    </p>
-
-    <h3>Google's Privacy Policy</h3>
-    <p>
-      When you use Google Sign-In, Google's own privacy practices also apply:
-      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a>
-    </p>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════
-       SECTION 6 — THIRD-PARTY LIBRARIES
-  ══════════════════════════════════════════ -->
-  <section id="third-party">
-    <div class="section-header">
-      <div class="section-icon">📦</div>
-      <h2 class="section-title">6. Third-Party Libraries &amp; SDKs</h2>
-    </div>
-
-    <p>
-      GoNotes Pro includes the following third-party libraries. Each is evaluated
-      for data-collection behaviour:
-    </p>
-
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Library</th>
-            <th>Purpose</th>
-            <th>Network Access</th>
-            <th>Data Collected</th>
-            <th>Privacy Link</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Google Play Services Auth</strong><br><small>com.google.android.gms:play-services-auth</small></td>
-            <td>Google Sign-In OAuth flow</td>
-            <td>Yes (Google OAuth)</td>
-            <td>Google account token (handled by Google)</td>
-            <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></td>
-          </tr>
-          <tr>
-            <td><strong>Google Drive API</strong><br><small>com.google.apis:google-api-services-drive</small></td>
-            <td>Read/write encrypted backup to Drive appdata folder</td>
-            <td>Yes (Google Drive)</td>
-            <td>None beyond auth token</td>
-            <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></td>
-          </tr>
-          <tr>
-            <td><strong>Glide</strong><br><small>com.github.bumptech.glide</small></td>
-            <td>Efficient image loading and memory management</td>
-            <td><span class="badge badge-green">No</span></td>
-            <td>None — loads local images only</td>
-            <td><a href="https://github.com/bumptech/glide/blob/master/LICENSE" target="_blank" rel="noopener">BSD License</a></td>
-          </tr>
-          <tr>
-            <td><strong>RootBeer</strong><br><small>com.scottyab:rootbeer-lib</small></td>
-            <td>Detects whether the device is rooted to disable biometric security on compromised devices</td>
-            <td><span class="badge badge-green">No</span></td>
-            <td>None — result used locally to toggle biometric</td>
-            <td><a href="https://github.com/scottyab/rootbeer" target="_blank" rel="noopener">Apache 2.0</a></td>
-          </tr>
-          <tr>
-            <td><strong>AndroidX Biometric</strong><br><small>androidx.biometric:biometric</small></td>
-            <td>Fingerprint / face unlock for locked notes (Biometric Vault)</td>
-            <td><span class="badge badge-green">No</span></td>
-            <td>None — biometric data never leaves the Secure Enclave/TEE</td>
-            <td><a href="https://developer.android.com/privacy-and-security/biometric" target="_blank" rel="noopener">Android Docs</a></td>
-          </tr>
-          <tr>
-            <td><strong>Material Design / AppCompat / ConstraintLayout</strong><br><small>com.google.android.material, androidx.*</small></td>
-            <td>UI components, layouts, and theming</td>
-            <td><span class="badge badge-green">No</span></td>
-            <td>None</td>
-            <td>—</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="callout callout-green">
-      <div class="callout-icon">✅</div>
-      <div class="callout-body">
-        <strong>No advertising, analytics, or crash-reporting SDKs are included.</strong>
-        GoNotes Pro does not integrate Firebase, Google Analytics, Crashlytics,
-        Facebook SDK, Amplitude, Mixpanel, Adjust, AppsFlyer, or any similar SDK.
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════
-       SECTION 7 — DATA SHARING & SELLING
-  ══════════════════════════════════════════ -->
-  <section id="data-sharing">
-    <div class="section-header">
-      <div class="section-icon">🤝</div>
-      <h2 class="section-title">7. Data Sharing &amp; Selling</h2>
-    </div>
-
-    <p>
-      <strong>We do not sell, rent, lease, or share your personal data with any
-      third party.</strong>
-    </p>
-
-    <p>The only outbound data flow is:</p>
-    <ul>
-      <li>
-        <strong>Google Drive backup</strong> (optional, user-initiated): an
-        AES-256 encrypted file uploaded to your own private Google Drive
-        <code>appdata</code> folder. This data is inaccessible to us or anyone
-        else — only your Google account can access it.
-      </li>
-    </ul>
-
-    <h3>Sharing via Your Own Actions</h3>
-    <p>
-      When you use the <strong>"Share Note"</strong>, <strong>"Share as PDF"</strong>,
-      or <strong>"Share as Text File"</strong> features, you choose the destination
-      app (WhatsApp, email, etc.) yourself. GoNotes Pro simply hands the file to
-      Android's share system — we do not send data to any server.
-    </p>
-
-    <h3>Legal Disclosure</h3>
-    <p>
-      We may disclose information if required by applicable law, court order,
-      or governmental authority. As GoNotes Pro stores all data locally on
-      your device, we do not hold your notes on any server and therefore have
-      no notes to disclose.
-    </p>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════
-       SECTION 8 — USER RIGHTS & DATA DELETION
-  ══════════════════════════════════════════ -->
-  <section id="user-rights">
-    <div class="section-header">
-      <div class="section-icon">🧑‍⚖️</div>
-      <h2 class="section-title">8. Your Rights &amp; Data Deletion</h2>
-    </div>
-
-    <h3>Accessing Your Data</h3>
-    <p>
-      All your notes and settings are stored on your device and are fully
-      accessible to you within the app at all times.
-    </p>
-
-    <h3>Exporting Your Data</h3>
-    <p>
-      You can export your notes at any time using the
-      <strong>"Export as Source File"</strong> option (creates a
-      <code>.qnb</code> file you can save), or share individual notes as PDF
-      or text files.
-    </p>
-
-    <h3>Deleting Your Data</h3>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>What to Delete</th>
-            <th>How to Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>All notes and app data</td>
-            <td>Android Settings → Apps → GoNotes Pro → Clear Data, <br>or uninstall the app</td>
-          </tr>
-          <tr>
-            <td>Google Drive backup</td>
-            <td>GoNotes Pro → Side Menu → Manage → Delete Drive Backup, <br>or visit <a href="https://drive.google.com" target="_blank" rel="noopener">drive.google.com</a> → Settings → Manage Apps</td>
-          </tr>
-          <tr>
-            <td>Google Sign-In connection</td>
-            <td>GoNotes Pro → Side Menu → Sign Out, <br>or visit <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a></td>
-          </tr>
-          <tr>
-            <td>Individual notes</td>
-            <td>Long-press note → Delete, or swipe to Recycle Bin → Empty Bin</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3>Portability</h3>
-    <p>
-      Your notes are yours. You can export them and use them with any other
-      application that accepts plain text or JSON format.
-    </p>
-
-    <h3>GDPR / Privacy Rights (EU/UK Users)</h3>
-    <p>
-      If you are located in the European Economic Area (EEA) or United Kingdom,
-      you have the right to: access, rectify, erase, restrict processing of,
-      and port your personal data. Because all data is stored locally on your
-      device, you can exercise these rights directly without contacting us.
-      For account-related data (Google email stored in the app), you can
-      clear it via Sign Out or Clear Data.
-    </p>
-
-    <h3>CCPA (California Users)</h3>
-    <p>
-      We do not sell personal information. California residents have the right
-      to know what data is collected — see <a href="#data-collected">Section 2</a>
-      for a complete list.
-    </p>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════
-       SECTION 9 — CHILDREN'S PRIVACY
-  ══════════════════════════════════════════ -->
-  <section id="children">
-    <div class="section-header">
-      <div class="section-icon">👶</div>
-      <h2 class="section-title">9. Children's Privacy</h2>
-    </div>
-
-    <p>
-      GoNotes Pro is a <strong>general-audience application</strong> intended
-      for users aged 13 and above. It is not directed at children under 13.
-    </p>
-
-    <p>
-      We do not knowingly collect personal information from children under 13.
-      Because GoNotes Pro does not require account registration or collect any
-      personal data from its own servers, we are not able to identify the age
-      of users. All data is stored locally on the user's device.
-    </p>
-
-    <p>
-      If you are a parent or guardian and believe your child under 13 has used
-      the Google Sign-In feature within GoNotes Pro, you may revoke access via
-      <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">
-      Google Account Permissions</a> and remove the app from the device.
-    </p>
-
-    <p>
-      If you have concerns, please contact us at the address in
-      <a href="#contact">Section 12</a>.
-    </p>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════
-       SECTION 10 — SECURITY MEASURES
-  ══════════════════════════════════════════ -->
-  <section id="security">
-    <div class="section-header">
-      <div class="section-icon">🛡️</div>
-      <h2 class="section-title">10. Security Measures</h2>
-    </div>
-
-    <p>
-      GoNotes Pro implements multiple layers of security to protect your data:
-    </p>
-
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Security Feature</th>
-            <th>Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>AES-256-GCM Encryption</strong></td>
-            <td>All notes are encrypted at rest using AES-256 in GCM mode. Authentication tags are verified on decryption to detect tampered data.</td>
-          </tr>
-          <tr>
-            <td><strong>Hardware-Backed Keys (AndroidKeyStore)</strong></td>
-            <td>Encryption keys are stored in the Android Keystore system, backed by a hardware Trusted Execution Environment (TEE) on supported devices. Keys cannot be extracted.</td>
-          </tr>
-          <tr>
-            <td><strong>PBKDF2 Key Derivation</strong></td>
-            <td>The backup encryption key is derived using PBKDF2WithHmacSHA256, making brute-force attacks computationally expensive.</td>
-          </tr>
-          <tr>
-            <td><strong>Biometric Authentication</strong></td>
-            <td>Biometric (fingerprint/face) is available to unlock the Note Vault. Biometric data never leaves the device's Secure Enclave.</td>
-          </tr>
-          <tr>
-            <td><strong>Root Detection</strong></td>
-            <td>The app detects rooted devices and disables biometric security features on them, since root access can compromise biometric authentication.</td>
-          </tr>
-          <tr>
-            <td><strong>HTTPS Only</strong></td>
-            <td>Cleartext HTTP is explicitly blocked (<code>android:usesCleartextTraffic="false"</code>). All network communication uses TLS/HTTPS.</td>
-          </tr>
-          <tr>
-            <td><strong>No Auto-Backup</strong></td>
-            <td><code>android:allowBackup="false"</code> prevents Android's built-in cloud backup from copying notes without your knowledge.</td>
-          </tr>
-          <tr>
-            <td><strong>Screenshot Protection</strong></td>
-            <td>The PIN entry screen sets <code>FLAG_SECURE</code>, preventing screenshots, screen recording, and preview in the app switcher.</td>
-          </tr>
-          <tr>
-            <td><strong>Image Path Encryption</strong></td>
-            <td>File paths of attached images stored inside note JSON are also encrypted individually.</td>
-          </tr>
-          <tr>
-            <td><strong>Drive App-Folder Scope Only</strong></td>
-            <td>Google Drive access is restricted to the private <code>appdata</code> scope — the narrowest possible Drive permission.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p>
-      While we implement strong security measures, no method of transmission or
-      storage is 100% secure. We encourage you to use a strong device PIN/passcode
-      for an additional layer of protection.
-    </p>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════
-       SECTION 11 — CHANGES TO THIS POLICY
-  ══════════════════════════════════════════ -->
-  <section id="changes">
-    <div class="section-header">
-      <div class="section-icon">📝</div>
-      <h2 class="section-title">11. Changes to This Policy</h2>
-    </div>
-
-    <p>
-      We may update this Privacy Policy periodically to reflect changes in the
-      app's features, legal requirements, or privacy practices. When we make
-      material changes, we will:
-    </p>
-    <ul>
-      <li>Update the "Last Updated" date at the top of this page</li>
-      <li>Notify users via a notice inside the app (where applicable)</li>
-      <li>Update the policy link in the Play Store listing</li>
-    </ul>
-
-    <p>
-      Continued use of the app after any changes constitutes acceptance of the
-      revised policy. We encourage you to review this page periodically.
-    </p>
-
-    <h3>Version History</h3>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Version</th>
-            <th>Date</th>
-            <th>Summary of Changes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1.0</td>
-            <td>July 25, 2025</td>
-            <td>Initial privacy policy publication</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════
-       SECTION 12 — CONTACT
-  ══════════════════════════════════════════ -->
-  <section id="contact">
-    <div class="section-header">
-      <div class="section-icon">📬</div>
-      <h2 class="section-title">12. Contact Us</h2>
-    </div>
-
-    <p>
-      If you have any questions, concerns, or requests regarding this Privacy
-      Policy or the app's data practices, please contact us:
-    </p>
-
-    <div class="callout callout-blue">
-      <div class="callout-icon">📧</div>
-      <div class="callout-body">
-        <strong>Developer / Data Controller:</strong> Pramod Thakur (NishuApps)<br>
-        <strong>Email:</strong>
-        <a href="mailto:nishuapps.dev@gmail.com">nishuapps.dev@gmail.com</a>
-        <em style="font-size:.85rem; color:var(--muted)">
-          (replace with your actual email before publishing)
-        </em><br>
-        <strong>GitHub:</strong>
-        <a href="https://github.com/pramodThakur1" target="_blank" rel="noopener">github.com/pramodThakur1</a><br>
-        <strong>App:</strong> GoNotes Pro — com.nishuapps.gonotes
-      </div>
-    </div>
-
-    <p style="margin-top:16px;">
-      We aim to respond to all privacy-related inquiries within
-      <strong>30 days</strong>.
-    </p>
-  </section>
-
-</div><!-- /.container -->
+</main>
 
 <footer>
-  <p>
-    &copy; 2025 Pramod Thakur (NishuApps). All rights reserved.<br>
-    GoNotes Pro &mdash; Privacy Policy &mdash; Version 1.0 &mdash; Last updated July 25, 2025
-  </p>
-  <p style="margin-top:8px;">
-    This policy was written to comply with
-    <a href="https://support.google.com/googleplay/android-developer/answer/9859455" target="_blank" rel="noopener">
-      Google Play's Data Safety requirements
-    </a>,
-    GDPR, and CCPA guidelines.
-  </p>
+  <p>© 2026 NishuApps. All rights reserved.</p>
 </footer>
 
+</div>
 </body>
 </html>
