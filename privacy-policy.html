@@ -5,54 +5,153 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy Policy — GoNotes Pro</title>
 <style>
-  :root {
-    --bg: #f7f7f9;
-    --card: #ffffff;
-    --text: #1f2430;
-    --muted: #5b6472;
-    --accent: #2f6fed;
-    --border: #e3e6ec;
+  :root{
+    --bg:#f5f7fb;
+    --surface:#ffffff;
+    --surface-soft:#f8faff;
+    --text:#172033;
+    --muted:#667085;
+    --accent:#4f46e5;
+    --accent-2:#2563eb;
+    --border:#e7eaf0;
+    --shadow:0 10px 30px rgba(15,23,42,.06);
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.65;
-    padding: 0 16px 64px;
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:
+      radial-gradient(circle at 10% 0%, rgba(79,70,229,.10), transparent 28%),
+      radial-gradient(circle at 90% 0%, rgba(37,99,235,.08), transparent 25%),
+      var(--bg);
+    color:var(--text);
+    line-height:1.72;
+    padding:28px 16px 72px;
   }
-  .wrap { max-width: 760px; margin: 0 auto; }
-  header {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    margin: 32px 0 24px;
-    padding: 28px 28px 24px;
+  .wrap{max-width:900px;margin:0 auto}
+  header{
+    position:relative;
+    overflow:hidden;
+    color:#fff;
+    border:0;
+    border-radius:28px;
+    margin:0 0 22px;
+    padding:42px 42px 36px;
+    background:linear-gradient(135deg,#312e81 0%,#4f46e5 48%,#2563eb 100%);
+    box-shadow:0 20px 50px rgba(37,48,120,.20);
   }
-  header h1 { font-size: 26px; margin-bottom: 6px; }
-  header p { color: var(--muted); font-size: 14px; }
-  main section {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px 28px;
-    margin-bottom: 18px;
+  header:after{
+    content:"";
+    position:absolute;
+    width:230px;height:230px;
+    border-radius:50%;
+    right:-90px;top:-100px;
+    background:rgba(255,255,255,.10);
   }
-  h2 { font-size: 19px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
-  h3 { font-size: 15px; margin: 16px 0 6px; }
-  p { margin-bottom: 10px; }
-  ul, ol { margin: 0 0 12px 22px; }
-  li { margin-bottom: 6px; }
-  strong { font-weight: 600; }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .muted { color: var(--muted); font-size: 14px; }
-  .box { background: #f2f5fb; border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin: 12px 0; }
-  footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 24px; }
-  @media (max-width: 600px) {
-    body { padding: 0 10px 40px; }
-    header, main section { padding: 18px 16px; }
-    header h1 { font-size: 22px; }
+  .brand{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:22px;
+    position:relative;
+    z-index:1;
+  }
+  .brand-mark{
+    width:42px;height:42px;border-radius:13px;
+    display:grid;place-items:center;
+    background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.22);
+    font-size:20px;
+    font-weight:800;
+  }
+  .brand-name{font-weight:700;letter-spacing:.1px}
+  header h1{
+    position:relative;z-index:1;
+    font-size:clamp(30px,5vw,42px);
+    line-height:1.12;
+    letter-spacing:-1px;
+    margin-bottom:12px;
+  }
+  header .lead{
+    position:relative;z-index:1;
+    max-width:680px;
+    color:rgba(255,255,255,.86);
+    font-size:16px;
+    margin-bottom:22px;
+  }
+  .meta{
+    position:relative;z-index:1;
+    display:flex;flex-wrap:wrap;gap:9px;
+  }
+  .pill{
+    display:inline-flex;align-items:center;
+    padding:7px 11px;border-radius:999px;
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.18);
+    color:#fff;font-size:13px;
+  }
+  .layout{display:grid;grid-template-columns:205px minmax(0,1fr);gap:20px;align-items:start}
+  .toc{
+    position:sticky;top:18px;
+    background:rgba(255,255,255,.86);
+    backdrop-filter:blur(12px);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:17px;
+    box-shadow:var(--shadow);
+  }
+  .toc-title{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:2px 8px 10px}
+  .toc a{
+    display:block;padding:7px 9px;border-radius:9px;
+    color:var(--muted);font-size:13px;text-decoration:none;
+  }
+  .toc a:hover{background:var(--surface-soft);color:var(--accent)}
+  main section{
+    scroll-margin-top:18px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:28px 32px;
+    margin-bottom:15px;
+    box-shadow:var(--shadow);
+  }
+  h2{
+    display:flex;align-items:center;gap:10px;
+    font-size:20px;letter-spacing:-.25px;
+    margin-bottom:15px;padding-bottom:12px;
+    border-bottom:1px solid var(--border);
+  }
+  h2:before{
+    content:"";
+    width:4px;height:22px;border-radius:4px;
+    background:linear-gradient(180deg,var(--accent),var(--accent-2));
+    flex:none;
+  }
+  h3{font-size:15px;margin:18px 0 7px}
+  p{margin-bottom:12px}
+  ul,ol{margin:0 0 14px 21px}
+  li{margin-bottom:7px;padding-left:2px}
+  strong{font-weight:700}
+  a{color:var(--accent);text-decoration:none;font-weight:600}
+  a:hover{text-decoration:underline}
+  .muted{color:var(--muted);font-size:14px}
+  .box{
+    background:linear-gradient(180deg,#f8faff,#f4f6ff);
+    border:1px solid #dfe3ff;
+    border-radius:14px;
+    padding:16px 18px;
+    margin:15px 0;
+  }
+  footer{text-align:center;color:var(--muted);font-size:13px;margin-top:24px;padding:8px}
+  @media(max-width:760px){
+    body{padding:14px 10px 48px}
+    header{border-radius:22px;padding:30px 23px 26px}
+    .layout{display:block}
+    .toc{display:none}
+    main section{padding:22px 20px;border-radius:17px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
   }
 </style>
 </head>
@@ -60,21 +159,46 @@
 <div class="wrap">
 
 <header>
+  <div class="brand">
+    <div class="brand-mark">✓</div>
+    <div class="brand-name">NishuApps · GoNotes Pro</div>
+  </div>
   <h1>Privacy Policy</h1>
-  <p><strong>GoNotes Pro</strong> — developed by <strong>NishuApps</strong></p>
-  <p class="muted">Last Updated: August 2, 2026</p>
+  <p class="lead">A clear overview of how GoNotes Pro handles your notes, images, Google Account sign-in, and optional Google Drive backup.</p>
+  <div class="meta">
+    <span class="pill">Last updated · August 2, 2026</span>
+    <span class="pill">GoNotes Pro</span>
+  </div>
 </header>
+
+<div class="layout">
+  <nav class="toc" aria-label="Privacy Policy sections">
+    <div class="toc-title">On this page</div>
+    <a href="#intro">Introduction</a>
+    <a href="#information">Information We Handle</a>
+    <a href="#google">Google Account</a>
+    <a href="#drive">Drive Backup</a>
+    <a href="#content">Your Content</a>
+    <a href="#storage">Local Storage</a>
+    <a href="#sharing">Data Sharing</a>
+    <a href="#security">Security</a>
+    <a href="#retention">Data Retention</a>
+    <a href="#deletion">Data Deletion</a>
+    <a href="#logout">Logout</a>
+    <a href="#choices">Your Choices</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
 <main>
 
-<section>
+<section id="intro">
   <h2>Introduction</h2>
   <p>This Privacy Policy explains how the <strong>GoNotes Pro</strong> Android application ("the App", "we", "our") handles information when you use the App. The App is developed and maintained by <strong>NishuApps</strong>.</p>
   <p>GoNotes Pro is a notes application. Its core features — creating, editing, storing, searching, and organizing notes — work entirely on your device. An optional Google account sign-in is available only for users who choose to back up and restore their notes using Google Drive.</p>
   <p>By using the App, you agree to the practices described in this Privacy Policy. We encourage you to read it carefully.</p>
 </section>
 
-<section>
+<section id="information">
   <h2>Information We Handle</h2>
   <p>The App handles the following categories of information, all of which are provided by you or created through your use of the App:</p>
   <ul>
@@ -87,7 +211,7 @@
   <p>The App does <strong>not</strong> collect device location, contacts, calendar data, SMS or call information, financial information, health information, or advertising identifiers. The App does not use any analytics, advertising, or tracking services.</p>
 </section>
 
-<section>
+<section id="google">
   <h2>Google Account / Authentication</h2>
   <p>GoNotes Pro does <strong>not</strong> create or maintain a separate GoNotes Pro user account. There is no registration system, no email-and-password sign-up, and no GoNotes-specific account profile.</p>
   <p>Instead, the App optionally uses your <strong>existing Google Account</strong> through Google Sign-In for two purposes only:</p>
@@ -100,7 +224,7 @@
   <p>Sign-in is <strong>completely optional</strong>. If you do not sign in, all App features other than cloud backup and restore continue to work normally.</p>
 </section>
 
-<section>
+<section id="drive">
   <h2>Google Drive Backup &amp; Synchronization</h2>
   <p>Google Drive backup and synchronization are available when you sign in with your Google Account. After your first sign-in, GoNotes Pro automatically begins backing up your existing notes and associated images to the app-specific area of your Google Drive. While you remain signed in, newly created notes, associated images, and changes to existing notes may be automatically synchronized to your Google Drive backup.</p>
   <p>When you sign in again after previously using the backup feature, GoNotes Pro first restores available data from your existing GoNotes Pro backup and then uploads local data that is not already present in that backup.</p>
@@ -109,7 +233,7 @@
   <p>GoNotes Pro uses its app-specific Google Drive storage for its backup data and does not access, modify, or delete your other personal files or folders in Google Drive.</p>
 </section>
 
-<section>
+<section id="content">
   <h2>User-Generated Content</h2>
   <p>The content you create in the App remains under your control. This includes:</p>
   <ul>
@@ -122,7 +246,7 @@
   <p>Your user-generated content is <strong>not shared with any third party</strong>. It is not sold, and it is not used for advertising or analytics.</p>
 </section>
 
-<section>
+<section id="storage">
   <h2>Local Storage</h2>
   <p>The App stores data on your device in the following ways:</p>
   <ul>
@@ -148,7 +272,7 @@
   <p>The App does not use your information for advertising, marketing, profiling, or any purpose other than those described in this Policy.</p>
 </section>
 
-<section>
+<section id="sharing">
   <h2>Data Sharing / Third Parties</h2>
   <p>GoNotes Pro does <strong>not</strong> sell, rent, or share your information with third parties for advertising, analytics, or any commercial purpose.</p>
   <p>However, because the App integrates with Google services, certain information is provided to Google when you choose to use those features:</p>
@@ -172,7 +296,7 @@
   <p>The App does not request access to your contacts, location, microphone, call logs, SMS, calendar, or media storage.</p>
 </section>
 
-<section>
+<section id="security">
   <h2>Security</h2>
   <p>We take reasonable technical and organizational measures to help protect your information:</p>
   <ul>
@@ -185,7 +309,7 @@
   <p>While we strive to use reasonable safeguards, no method of electronic storage or transmission is completely secure. We cannot guarantee absolute security of your information.</p>
 </section>
 
-<section>
+<section id="retention">
   <h2>Data Retention</h2>
   <p>The App retains information for as long as necessary to provide the functionality you request, unless you choose to delete it using the deletion features described below.</p>
   <ul>
@@ -195,7 +319,7 @@
   <p>We do not enforce any fixed retention period because the App has no servers of its own — data is not stored by us, only on your device and, if you choose, in your Google Drive.</p>
 </section>
 
-<section>
+<section id="deletion">
   <h2>Data Deletion</h2>
   <p>You can delete your GoNotes Pro data from inside the App at any time.</p>
   <div class="box">
@@ -215,7 +339,7 @@
   </ul>
 </section>
 
-<section>
+<section id="logout">
   <h2>Logout / Disconnect</h2>
   <p>The App provides a <strong>Logout</strong> option for users who have signed in with Google.</p>
   <p>Logout does the following:</p>
@@ -233,7 +357,7 @@
   <p>GoNotes Pro is a general-purpose notes application and is not directed at children under the age of 13. We do not knowingly collect personal information from children. If you are a parent or guardian and believe your child has provided personal information through the App, please contact us at the address below so we can assist.</p>
 </section>
 
-<section>
+<section id="choices">
   <h2>User Choices</h2>
   <p>You have the following choices regarding your information:</p>
   <ul>
@@ -252,7 +376,7 @@
   <p>We encourage you to review this Privacy Policy periodically to stay informed about how the App handles your information.</p>
 </section>
 
-<section>
+<section id="contact">
   <h2>Contact Us</h2>
   <p>If you have any questions, concerns, or requests regarding this Privacy Policy or your data, you can contact us at:</p>
   <p><strong>NishuApps</strong><br>
@@ -261,6 +385,7 @@
 </section>
 
 </main>
+</div>
 
 <footer>
   <p>© 2026 NishuApps. All rights reserved.</p>
