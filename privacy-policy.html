@@ -357,9 +357,16 @@
           </tr>
           <tr>
             <td><strong>PIN hashes</strong></td>
-            <td>Numeric PINs set to lock individual notes (stored hashed)</td>
-            <td>Device only (inside encrypted note JSON)</td>
-            <td><span class="badge badge-green">Never</span></td>
+            <td>
+              Numeric PINs used to lock individual notes are stored as secure hashes,
+              not as plain-text PINs. When Google Drive backup or synchronization is
+              enabled, the hashed PIN and note lock status may be included in the
+              encrypted backup.
+            </td>
+            <td>
+              Device storage; may also be included in the encrypted Google Drive backup
+            </td>
+            <td>Only when encrypted Drive backup or synchronization is enabled</td>
           </tr>
         </tbody>
       </table>
@@ -378,13 +385,18 @@
         <tbody>
           <tr>
             <td><strong>Google account email</strong></td>
-            <td>To identify your account for backup/restore and display your name in the app</td>
+            <td>To identify the signed-in account for backup/restore and account-related features</td>
             <td>Device only (encrypted in SharedPreferences)</td>
           </tr>
           <tr>
+            <td><strong>Google account display name and profile photo</strong></td>
+            <td>To identify and personalize the signed-in user experience within the app</td>
+            <td>Used within the app; not stored on our own server</td>
+          </tr>
+          <tr>
             <td><strong>Google account numeric ID</strong></td>
-            <td>To derive the encryption key for your Drive backup (PBKDF2 key derivation)</td>
-            <td>Never stored — used in memory only during encryption</td>
+            <td>Used in memory to derive the encryption key for the Drive backup (PBKDF2 key derivation)</td>
+            <td>Not stored by GoNotes Pro</td>
           </tr>
         </tbody>
       </table>
@@ -421,90 +433,15 @@
 
       <div class="perm-card">
         <div class="perm-top">
-          <span class="perm-icon">📷</span>
-          <span class="perm-name">CAMERA</span>
-        </div>
-        <div class="perm-desc">
-          Lets you take a photo directly from within the app and attach it to a note.
-          Photos are saved to the app's private storage. The camera is <strong>never
-          activated silently</strong> — it only opens when you explicitly tap the camera button.
-          <br><br><span class="badge badge-blue">Optional — only when you tap "Take Photo"</span>
-        </div>
-      </div>
-
-      <div class="perm-card">
-        <div class="perm-top">
-          <span class="perm-icon">🔔</span>
-          <span class="perm-name">POST_NOTIFICATIONS</span>
-        </div>
-        <div class="perm-desc">
-          Required on Android 13+ to show reminder notifications. A notification
-          is only sent at the reminder time you set for a specific note. No
-          promotional or unsolicited notifications are sent.
-          <br><br><span class="badge badge-blue">Optional — only if you set a reminder</span>
-        </div>
-      </div>
-
-      <div class="perm-card">
-        <div class="perm-top">
-          <span class="perm-icon">⏰</span>
-          <span class="perm-name">SCHEDULE_EXACT_ALARM</span>
-        </div>
-        <div class="perm-desc">
-          Allows the app to fire reminder alarms at the <em>exact</em> time you
-          specified. Without this, Android can delay alarms by several minutes.
-          <br><br><span class="badge badge-blue">Optional — only if you set a reminder</span>
-        </div>
-      </div>
-
-      <div class="perm-card">
-        <div class="perm-top">
-          <span class="perm-icon">🔁</span>
-          <span class="perm-name">RECEIVE_BOOT_COMPLETED</span>
-        </div>
-        <div class="perm-desc">
-          When your device restarts, Android clears all scheduled alarms.
-          This permission lets GoNotes Pro reschedule your reminders automatically
-          after a reboot so you don't miss them.
-          <br><br><span class="badge badge-blue">Optional — only if you have active reminders</span>
-        </div>
-      </div>
-
-      <div class="perm-card">
-        <div class="perm-top">
-          <span class="perm-icon">💡</span>
-          <span class="perm-name">WAKE_LOCK</span>
-        </div>
-        <div class="perm-desc">
-          Briefly wakes the CPU when a reminder alarm fires to ensure the
-          notification is delivered, even when your device is in deep sleep.
-          The screen is not turned on unless you have set a full-screen alert.
-          <br><br><span class="badge badge-blue">Only during alarm delivery</span>
-        </div>
-      </div>
-
-      <div class="perm-card">
-        <div class="perm-top">
-          <span class="perm-icon">📺</span>
-          <span class="perm-name">USE_FULL_SCREEN_INTENT</span>
-        </div>
-        <div class="perm-desc">
-          Displays a full-screen alarm notification on the lock screen when a
-          reminder fires while the phone is locked — similar to a clock alarm.
-          <br><br><span class="badge badge-blue">Only when alarm fires on lock screen</span>
-        </div>
-      </div>
-
-      <div class="perm-card">
-        <div class="perm-top">
           <span class="perm-icon">🌐</span>
           <span class="perm-name">INTERNET</span>
         </div>
         <div class="perm-desc">
-          Used <strong>only</strong> to communicate with Google Drive for
-          backup and restore. All traffic is encrypted via HTTPS. The app has
-          no other servers, no analytics endpoints, and no ad networks.
-          <br><br><span class="badge badge-blue">Optional — only during Drive sync</span>
+          Used to communicate securely with Google services for Google Sign-In
+          authentication and, when enabled, Google Drive backup, restore, and
+          synchronization. All traffic is encrypted via HTTPS. The app has no
+          other servers, analytics endpoints, or ad networks.
+          <br><br><span class="badge badge-blue">Optional — only when using Google services</span>
         </div>
       </div>
 
@@ -565,13 +502,24 @@
 
     <h3>Encryption (AES-256-GCM)</h3>
     <p>
-      Notes are encrypted using <strong>AES-256-GCM</strong> — the same
-      standard used by modern browsers and messaging apps. The encryption key is:
+      GoNotes Pro uses AES-256-GCM encryption for protected note data and for
+      encrypted Google Drive backups.
     </p>
     <ul>
-      <li>Derived from your Google account numeric ID using <strong>PBKDF2WithHmacSHA256</strong> (industry-standard key derivation)</li>
-      <li>Stored in the <strong>Android Keystore</strong>, which is hardware-backed on modern devices — the key cannot be extracted from the device</li>
-      <li>Never transmitted or stored in plaintext anywhere</li>
+      <li>
+        <strong>Local note data:</strong> encrypted using an Android Keystore-managed
+        encryption key. On supported devices, the Keystore can be backed by secure
+        hardware such as a Trusted Execution Environment (TEE).
+      </li>
+      <li>
+        <strong>Google Drive backups:</strong> use a separate randomly generated
+        encryption key. That backup key is protected using a key derived from the
+        signed-in Google account ID with <strong>PBKDF2WithHmacSHA256</strong>.
+      </li>
+      <li>
+        Encryption keys and plaintext note content are not intentionally transmitted
+        to NishuApps-operated servers.
+      </li>
     </ul>
 
     <h3>Image Storage</h3>
@@ -770,17 +718,22 @@
     </div>
 
     <p>
-      <strong>We do not sell, rent, lease, or share your personal data with any
-      third party.</strong>
+      <strong>We do not sell your personal data or share it with advertisers,
+      analytics providers, data brokers, or other unrelated third parties.</strong>
     </p>
 
-    <p>The only outbound data flow is:</p>
+    <p>When you use Google services with GoNotes Pro:</p>
     <ul>
+      <li>
+        <strong>Google Sign-In:</strong> Google receives the account and authentication
+        information required to sign you in. This is handled through Google's own
+        authentication service.
+      </li>
       <li>
         <strong>Google Drive backup and synchronization</strong> (optional, user-enabled):
         encrypted backup data may be uploaded to your own private Google Drive
-        <code>appdata</code> folder. This data is inaccessible to us or anyone
-        else — only your Google account can access it.
+        <code>appdata</code> folder. This data is inaccessible to us or unrelated
+        third parties through GoNotes Pro's Drive access.
       </li>
     </ul>
 
@@ -841,7 +794,13 @@
           </tr>
           <tr>
             <td>Google Drive backup</td>
-            <td>GoNotes Pro → Side Menu → Manage → Delete Drive Backup (Google Drive must be connected for in-app cloud deletion), <br>or visit <a href="https://drive.google.com" target="_blank" rel="noopener">drive.google.com</a> → Settings → Manage Apps</td>
+            <td>
+              GoNotes Pro → Side Menu → Manage → Delete Drive Backup. If Google Drive
+              is connected, the app attempts to delete the cloud backup. If Drive is
+              not connected or cloud deletion fails, the local data may still be deleted
+              but the existing cloud backup can remain. You can also manage the app's
+              Drive data through <a href="https://drive.google.com" target="_blank" rel="noopener">drive.google.com</a>.
+            </td>
           </tr>
           <tr>
             <td>Google Sign-In connection</td>
@@ -857,8 +816,9 @@
 
     <h3>Portability</h3>
     <p>
-      Your notes are yours. You can export them and use them with any other
-      application that accepts plain text or JSON format.
+      Your notes are yours. You can export them as an encrypted GoNotes backup
+      file (<code>.qnb</code>) for restoration in GoNotes Pro. Individual notes
+      can also be shared as text or PDF files.
     </p>
 
     <h3>GDPR / Privacy Rights (EU/UK Users)</h3>
